@@ -79,6 +79,7 @@ public class Main {
 	}
 
 	private static void printMenu() {
+		System.out.println("\n\n\n");
 		System.out.println("Menu:");
 		System.out.println("=============");
 		System.out.println("1. Load Ontology file");
@@ -92,7 +93,7 @@ public class Main {
 		System.out.println("9. Do Query 8");
 		System.out.println("10. Do Query 9");
 		System.out.println("11. Do Query 10");
-		System.out.println("12. Exit");
+		System.out.println("12. Exit \n");
 	}
 
 	private static String cleanInput(String input) {
@@ -129,7 +130,7 @@ public class Main {
 	
 			case 2:
 				for (QuerySolution solution : querySolutions) {
-					RDFNode name = solution.get("sensor");
+					RDFNode name = solution.get("name");
 					RDFNode tag = solution.get("id");
 					System.out.println("Name:" + cleanStringOutput(name) + "| Tag ID: " + cleanStringOutput(tag));
 				}
@@ -184,9 +185,11 @@ public class Main {
 		List<QuerySolution> result = new LinkedList<QuerySolution>();
 
 		System.out.println("Executing Query...");
-		String queryString = queries[inputNumber - 2];
-		Query query = QueryFactory.create(queryString);
 		
+		String queryString = queries[inputNumber - 2];
+		System.out.println("Executing " + queryString);
+		
+		Query query = QueryFactory.create(queryString);
 		QueryExecution queryExecution = QueryExecutionFactory.create(query, ontoModel);
 		ResultSet resultSet = queryExecution.execSelect();
 		
