@@ -56,8 +56,22 @@ public class Main {
 				"?reading tcd:hasValue ?value." +
 				"FILTER(?sensorType = ?sensor)" +
 				"FILTER (?id = 32)}" +
-				"ORDER BY ASC(?reading)"
-	};
+				"ORDER BY ASC(?reading)",
+				
+		PREFIXES + "SELECT ?value " +
+				"WHERE { " +
+				"?building a tcd:Building. " +
+				"?reading a tcd:Sensor_Reading. " +
+				"?sensorType a tcd:Humidity_Sensor. " +
+				"?building tcd:dividedInto ?zone. " +
+				"?building tcd:hasName ?bname. " +
+				"?zone tcd:hasSensors ?sensor." +
+				"?reading tcd:hasSensorType ?sensorType." +
+				"?reading tcd:hasValue ?value " +
+				"FILTER(?sensorType = ?sensor) " +
+				"FILTER(?bname = 'BuildingA')" +
+				"}"
+		};
 	
 	public static void main(String args[]) throws IOException {
 
@@ -86,7 +100,7 @@ public class Main {
 		System.out.println("2. Names of all Staff members and their RFID Tag number");
 		System.out.println("3. Sensor and Id of sensor for a given room");
 		System.out.println("4. Average Temperature in zone x");
-		System.out.println("5. Do Query 4");
+		System.out.println("5. Average Humidity in BuildingA");
 		System.out.println("6. Do Query 5");
 		System.out.println("7. Do Query 6");
 		System.out.println("8. Do Query 7");
@@ -150,9 +164,20 @@ public class Main {
 					sum += Double.valueOf(output);
 					System.out.println("Temperature Value: " + output);
 				}
+				System.out.println("=============================================");
 				System.out.println("Average Value: " + (sum/querySolutions.size()));
 				break;
 			case 5:
+				sum = 0;
+				for (QuerySolution solution : querySolutions) {
+					RDFNode sensor = solution.get("value");
+					String output = cleanStringOutput(sensor);
+					sum += Double.valueOf(output);
+					System.out.println("Humidity Value: " + output);
+				}
+				System.out.println("=============================================");
+				System.out.println("Average Value: " + (sum/querySolutions.size()));
+				break;
 			case 6:
 			case 7:
 			case 8:

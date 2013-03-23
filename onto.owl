@@ -40,41 +40,54 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#staffAge">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
-    </rdfs:subClassOf>
-  </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag">
     <rdfs:subClassOf rdf:resource="#Thing"/>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#ownedBy"/>
         </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
         </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRecord"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#Thing"/>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasLogged"/>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasEmergencyEvent"/>
         </owl:onProperty>
         <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasTime"/>
+        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
@@ -97,54 +110,15 @@
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Event">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#usedLock"/>
         </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Event"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasActuaor"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >2</owl:maxCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#connects"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#Thing"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFIDReader"/>
-        </owl:onProperty>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
-        </owl:onProperty>
-      </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor">
@@ -158,9 +132,43 @@
       <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor"/>
     </owl:disjointWith>
   </owl:Class>
-  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#staffNumber">
+  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock">
     <rdfs:subClassOf>
-      <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasActuaor"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#connects"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFIDReader"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record">
@@ -176,13 +184,45 @@
     <rdfs:subClassOf rdf:resource="#Thing"/>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasTime"/>
         </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFID_Tag"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Environmental_Requirement">
+    <assert:empty rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX tcd: &lt;http://www.scss.tcd.ie/pg/ubicom/ruckr#&gt;
+SELECT ? tag ?person ?name
+WHERE {
+?tag a tcd:RFID_tag.
+?person tcd:isWearing ?tag .
+?person tcd:hasName ?name .
+}</assert:empty>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#currentLocation"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Event"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff">
     <rdfs:subClassOf>
@@ -195,9 +235,15 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#Thing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event">
-    <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Event"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasName"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Fire">
     <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event"/>
@@ -205,6 +251,9 @@
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Lock">
     <owl:disjointWith rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Unlock_Lock"/>
     <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Event"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent">
+    <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Event"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor">
     <owl:disjointWith>
@@ -215,6 +264,27 @@
       <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installAt"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor">
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor"/>
@@ -222,35 +292,14 @@
     <owl:disjointWith rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor"/>
     <owl:disjointWith rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installAt"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#Thing"/>
-  </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader">
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
         </owl:onProperty>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#Thing"/>
@@ -259,6 +308,15 @@
     <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Building">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasName"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
@@ -273,20 +331,20 @@
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasId"/>
         </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasEnvRequirement"/>
         </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -300,30 +358,27 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isConnectedTo"/>
         </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#Thing"/>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasSensors"/>
         </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature">
     <owl:disjointWith rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature"/>
     <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Environmental_Requirement"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#staffGender">
-    <rdfs:subClassOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor">
     <rdfs:subClassOf rdf:resource="#Thing"/>
@@ -346,6 +401,59 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isRecordedIn">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasSensorReading"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasSensors">
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installed"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFIDReader">
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installFor"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isConnectedTo">
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#connects"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#dividedInto">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#belongsTo"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Building"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRecord">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasLogged"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record"/>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#belongsTo">
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
+    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#dividedInto"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Building"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#ObjectProperty_7"/>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasSensorReading">
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent"/>
+    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#isRecordedIn"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasEnvRequirement">
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Environmental_Requirement"/>
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
@@ -355,61 +463,39 @@
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installFor">
-    <owl:inverseOf>
-      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFIDReader"/>
-    </owl:inverseOf>
+    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFIDReader"/>
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader"/>
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasSensors">
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor"/>
-    <owl:inverseOf>
-      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installed"/>
-    </owl:inverseOf>
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#ObjectProperty_9"/>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasEvent">
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record"/>
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Event"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasUserTag">
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag"/>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Unlock_Lock"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasEmergencyEvent">
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#connects">
-    <owl:inverseOf>
-      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isConnectedTo"/>
-    </owl:inverseOf>
+    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#isConnectedTo"/>
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFIDReader">
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader"/>
-    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#installFor"/>
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isConnectedTo">
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
-    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#connects"/>
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#usedLock">
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Event"/>
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasLogged">
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs"/>
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event"/>
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record"/>
+    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRecord"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#ObjectProperty_3"/>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#dividedInto">
-    <owl:inverseOf>
-      <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#belongsTo"/>
-    </owl:inverseOf>
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Building"/>
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#belongsTo">
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone"/>
-    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#dividedInto"/>
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Building"/>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasRFID_Tag">
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#ownedBy">
     <owl:inverseOf>
@@ -418,17 +504,21 @@
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag"/>
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isWearing">
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
+    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#ownedBy"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#currentLocation">
+    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Emergency_Event"/>
+    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasActuaor">
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor"/>
     <owl:inverseOf>
       <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installAt"/>
     </owl:inverseOf>
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isWearing">
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
-    <owl:inverseOf rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#ownedBy"/>
-    <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#installed">
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor"/>
@@ -440,7 +530,6 @@
     <rdfs:range rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock"/>
     <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#ObjectProperty_7"/>
   <rdf:Property rdf:ID="topDataProperty"/>
   <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasValue">
     <rdfs:domain>
@@ -461,7 +550,14 @@
   <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#DatatypeProperty_22"/>
   <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasTime">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record"/>
+          <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#isLocked">
     <rdfs:subPropertyOf rdf:resource="#topDataProperty"/>
@@ -484,151 +580,21 @@
   <owl:DatatypeProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#DatatypeProperty_26"/>
   <owl:FunctionalProperty rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#hasName">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr/Staff"/>
+          <owl:Class rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Building"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdf:type rdf:resource="#DatatypeProperty"/>
   </owl:FunctionalProperty>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_4">
-    <j.0:hasSensorType>
-      <j.0:Temperature_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_3">
-        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >7</j.0:hasId>
-        <j.0:installed>
-          <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3">
-            <j.0:isConnectedTo>
-              <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock04">
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >21</j.0:hasId>
-                <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
-              </j.0:Lock>
-            </j.0:isConnectedTo>
-            <j.0:hasSensors>
-              <j.0:Light_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_3">
-                <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >3</j.0:hasId>
-              </j.0:Light_Sensor>
-            </j.0:hasSensors>
-            <j.0:hasEnvRequirement>
-              <j.0:Minimum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature_7">
-                <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-                >0.0</j.0:hasValue>
-              </j.0:Minimum_Temperature>
-            </j.0:hasEnvRequirement>
-            <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-            >34</j.0:hasId>
-            <j.0:belongsTo>
-              <j.0:Building rdf:about="http://www.w3.org/2002/07/BuildingB">
-                <j.0:dividedInto rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
-              </j.0:Building>
-            </j.0:belongsTo>
-            <j.0:hasSensors>
-              <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_03">
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >16</j.0:hasId>
-                <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
-              </j.0:RFID_Reader>
-            </j.0:hasSensors>
-            <j.0:hasSensors rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_3"/>
-            <j.0:hasSensors>
-              <j.0:Humidity_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_3">
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >12</j.0:hasId>
-                <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
-              </j.0:Humidity_Sensor>
-            </j.0:hasSensors>
-            <j.0:hasEnvRequirement>
-              <j.0:Maximum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_6">
-                <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-                >6.8</j.0:hasValue>
-              </j.0:Maximum_Temperature>
-            </j.0:hasEnvRequirement>
-            <j.0:isConnectedTo>
-              <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock05">
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >22</j.0:hasId>
-                <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
-              </j.0:Lock>
-            </j.0:isConnectedTo>
-          </j.0:Zone>
-        </j.0:installed>
-      </j.0:Temperature_Sensor>
-    </j.0:hasSensorType>
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >0.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
-  <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_06">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >25</j.0:hasId>
-  </j.0:RFID_Reader>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_12">
-    <j.0:hasSensorType>
-      <j.0:Humidity_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_4">
-        <j.0:installed>
-          <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4">
-            <j.0:belongsTo>
-              <j.0:Building rdf:about="http://www.w3.org/2002/07/Cantina">
-                <j.0:dividedInto rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
-              </j.0:Building>
-            </j.0:belongsTo>
-            <j.0:hasSensors>
-              <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_04">
-                <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >17</j.0:hasId>
-              </j.0:RFID_Reader>
-            </j.0:hasSensors>
-            <j.0:isConnectedTo>
-              <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock06">
-                <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >23</j.0:hasId>
-              </j.0:Lock>
-            </j.0:isConnectedTo>
-            <j.0:hasSensors rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_4"/>
-            <j.0:hasSensors>
-              <j.0:Temperature_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_4">
-                <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >8</j.0:hasId>
-              </j.0:Temperature_Sensor>
-            </j.0:hasSensors>
-            <j.0:hasEnvRequirement>
-              <j.0:Minimum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature_2">
-                <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-                >5.0</j.0:hasValue>
-              </j.0:Minimum_Temperature>
-            </j.0:hasEnvRequirement>
-            <j.0:hasEnvRequirement>
-              <j.0:Maximum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_1">
-                <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-                >50.0</j.0:hasValue>
-              </j.0:Maximum_Temperature>
-            </j.0:hasEnvRequirement>
-            <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-            >35</j.0:hasId>
-            <j.0:hasSensors>
-              <j.0:Light_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_4">
-                <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >4</j.0:hasId>
-              </j.0:Light_Sensor>
-            </j.0:hasSensors>
-          </j.0:Zone>
-        </j.0:installed>
-        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >13</j.0:hasId>
-      </j.0:Humidity_Sensor>
-    </j.0:hasSensorType>
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >15.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
-  <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_02">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >27</j.0:hasId>
-  </j.0:Actuaor>
   <owl:AllDifferent>
     <owl:distinctMembers rdf:parseType="Collection">
       <j.0:Building rdf:about="http://www.w3.org/2002/07/BuildingA">
+        <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >BuildingA</j.0:hasName>
         <j.0:dividedInto>
           <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_2">
             <j.0:hasSensors>
@@ -660,6 +626,271 @@
                 <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
                 >15</j.0:hasId>
                 <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_2"/>
+                <j.0:installFor>
+                  <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock02">
+                    <j.0:connects>
+                      <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1">
+                        <j.0:hasSensors>
+                          <j.0:Light_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_1">
+                            <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
+                            <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                            >1</j.0:hasId>
+                          </j.0:Light_Sensor>
+                        </j.0:hasSensors>
+                        <j.0:hasSensors>
+                          <j.0:Humidity_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_1">
+                            <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                            >9</j.0:hasId>
+                            <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
+                          </j.0:Humidity_Sensor>
+                        </j.0:hasSensors>
+                        <j.0:hasSensors>
+                          <j.0:Temperature_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_1">
+                            <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
+                            <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                            >5</j.0:hasId>
+                          </j.0:Temperature_Sensor>
+                        </j.0:hasSensors>
+                        <j.0:isConnectedTo rdf:resource="http://www.w3.org/2002/07/lock02"/>
+                        <j.0:hasEnvRequirement>
+                          <j.0:Maximum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_3">
+                            <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                            >25.6</j.0:hasValue>
+                          </j.0:Maximum_Temperature>
+                        </j.0:hasEnvRequirement>
+                        <j.0:isConnectedTo>
+                          <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock03">
+                            <j.0:hasActuaor>
+                              <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_03">
+                                <j.0:installAt rdf:resource="http://www.w3.org/2002/07/lock03"/>
+                                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                                >28</j.0:hasId>
+                              </j.0:Actuaor>
+                            </j.0:hasActuaor>
+                            <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                            >20</j.0:hasId>
+                            <j.0:hasRFIDReader>
+                              <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_03">
+                                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                                >16</j.0:hasId>
+                                <j.0:installFor rdf:resource="http://www.w3.org/2002/07/lock03"/>
+                                <j.0:installed>
+                                  <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3">
+                                    <j.0:isConnectedTo>
+                                      <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock04">
+                                        <j.0:hasRFIDReader>
+                                          <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_04">
+                                            <j.0:installed>
+                                              <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4">
+                                                <j.0:belongsTo>
+                                                  <j.0:Building rdf:about="http://www.w3.org/2002/07/Cantina">
+                                                    <j.0:hasName
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#string"
+                                                    >Cantina</j.0:hasName>
+                                                    <j.0:dividedInto rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
+                                                  </j.0:Building>
+                                                </j.0:belongsTo>
+                                                <j.0:hasSensors rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_04"/>
+                                                <j.0:isConnectedTo>
+                                                  <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock06">
+                                                    <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
+                                                    <j.0:hasActuaor>
+                                                      <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_06">
+                                                        <j.0:hasId
+                                                         rdf:datatype=
+                                                        "http://www.w3.org/2001/XMLSchema#int"
+                                                        >31</j.0:hasId>
+                                                        <j.0:installAt rdf:resource="http://www.w3.org/2002/07/lock06"/>
+                                                      </j.0:Actuaor>
+                                                    </j.0:hasActuaor>
+                                                    <j.0:hasRFIDReader>
+                                                      <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_06">
+                                                        <j.0:hasId
+                                                         rdf:datatype=
+                                                        "http://www.w3.org/2001/XMLSchema#int"
+                                                        >25</j.0:hasId>
+                                                        <j.0:installFor rdf:resource="http://www.w3.org/2002/07/lock06"/>
+                                                      </j.0:RFID_Reader>
+                                                    </j.0:hasRFIDReader>
+                                                    <j.0:hasId
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#int"
+                                                    >23</j.0:hasId>
+                                                  </j.0:Lock>
+                                                </j.0:isConnectedTo>
+                                                <j.0:hasSensors>
+                                                  <j.0:Humidity_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_4">
+                                                    <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
+                                                    <j.0:hasId
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#int"
+                                                    >13</j.0:hasId>
+                                                  </j.0:Humidity_Sensor>
+                                                </j.0:hasSensors>
+                                                <j.0:hasSensors>
+                                                  <j.0:Temperature_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_4">
+                                                    <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
+                                                    <j.0:hasId
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#int"
+                                                    >8</j.0:hasId>
+                                                  </j.0:Temperature_Sensor>
+                                                </j.0:hasSensors>
+                                                <j.0:hasEnvRequirement>
+                                                  <j.0:Minimum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature_2">
+                                                    <j.0:hasValue
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#float"
+                                                    >5.0</j.0:hasValue>
+                                                  </j.0:Minimum_Temperature>
+                                                </j.0:hasEnvRequirement>
+                                                <j.0:hasEnvRequirement>
+                                                  <j.0:Maximum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_1">
+                                                    <j.0:hasValue
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#float"
+                                                    >50.0</j.0:hasValue>
+                                                  </j.0:Maximum_Temperature>
+                                                </j.0:hasEnvRequirement>
+                                                <j.0:hasId rdf:datatype=
+                                                "http://www.w3.org/2001/XMLSchema#int"
+                                                >35</j.0:hasId>
+                                                <j.0:hasSensors>
+                                                  <j.0:Light_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_4">
+                                                    <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_4"/>
+                                                    <j.0:hasId
+                                                     rdf:datatype=
+                                                    "http://www.w3.org/2001/XMLSchema#int"
+                                                    >4</j.0:hasId>
+                                                  </j.0:Light_Sensor>
+                                                </j.0:hasSensors>
+                                              </j.0:Zone>
+                                            </j.0:installed>
+                                            <j.0:hasId rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#int"
+                                            >17</j.0:hasId>
+                                            <j.0:installFor rdf:resource="http://www.w3.org/2002/07/lock04"/>
+                                          </j.0:RFID_Reader>
+                                        </j.0:hasRFIDReader>
+                                        <j.0:hasId rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#int"
+                                        >21</j.0:hasId>
+                                        <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
+                                        <j.0:hasActuaor>
+                                          <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_04">
+                                            <j.0:installAt rdf:resource="http://www.w3.org/2002/07/lock04"/>
+                                            <j.0:hasId rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#int"
+                                            >29</j.0:hasId>
+                                          </j.0:Actuaor>
+                                        </j.0:hasActuaor>
+                                      </j.0:Lock>
+                                    </j.0:isConnectedTo>
+                                    <j.0:hasSensors>
+                                      <j.0:Light_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_3">
+                                        <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
+                                        <j.0:hasId rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#int"
+                                        >3</j.0:hasId>
+                                      </j.0:Light_Sensor>
+                                    </j.0:hasSensors>
+                                    <j.0:hasEnvRequirement>
+                                      <j.0:Minimum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature_7">
+                                        <j.0:hasValue rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#float"
+                                        >0.0</j.0:hasValue>
+                                      </j.0:Minimum_Temperature>
+                                    </j.0:hasEnvRequirement>
+                                    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                                    >34</j.0:hasId>
+                                    <j.0:belongsTo>
+                                      <j.0:Building rdf:about="http://www.w3.org/2002/07/BuildingB">
+                                        <j.0:hasName rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#string"
+                                        >BuildingB</j.0:hasName>
+                                        <j.0:dividedInto rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
+                                      </j.0:Building>
+                                    </j.0:belongsTo>
+                                    <j.0:hasSensors rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_03"/>
+                                    <j.0:hasSensors>
+                                      <j.0:Temperature_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_3">
+                                        <j.0:hasId rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#int"
+                                        >7</j.0:hasId>
+                                        <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
+                                      </j.0:Temperature_Sensor>
+                                    </j.0:hasSensors>
+                                    <j.0:hasSensors>
+                                      <j.0:Humidity_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_3">
+                                        <j.0:hasId rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#int"
+                                        >12</j.0:hasId>
+                                        <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
+                                      </j.0:Humidity_Sensor>
+                                    </j.0:hasSensors>
+                                    <j.0:hasEnvRequirement>
+                                      <j.0:Maximum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_6">
+                                        <j.0:hasValue rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#float"
+                                        >6.8</j.0:hasValue>
+                                      </j.0:Maximum_Temperature>
+                                    </j.0:hasEnvRequirement>
+                                    <j.0:isConnectedTo>
+                                      <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock05">
+                                        <j.0:hasId rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#int"
+                                        >22</j.0:hasId>
+                                        <j.0:hasRFIDReader>
+                                          <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_05">
+                                            <j.0:installFor rdf:resource="http://www.w3.org/2002/07/lock05"/>
+                                            <j.0:hasId rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#int"
+                                            >24</j.0:hasId>
+                                          </j.0:RFID_Reader>
+                                        </j.0:hasRFIDReader>
+                                        <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_3"/>
+                                        <j.0:hasActuaor>
+                                          <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_05">
+                                            <j.0:hasId rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#int"
+                                            >30</j.0:hasId>
+                                            <j.0:installAt rdf:resource="http://www.w3.org/2002/07/lock05"/>
+                                          </j.0:Actuaor>
+                                        </j.0:hasActuaor>
+                                      </j.0:Lock>
+                                    </j.0:isConnectedTo>
+                                  </j.0:Zone>
+                                </j.0:installed>
+                              </j.0:RFID_Reader>
+                            </j.0:hasRFIDReader>
+                            <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
+                          </j.0:Lock>
+                        </j.0:isConnectedTo>
+                        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >32</j.0:hasId>
+                        <j.0:hasEnvRequirement>
+                          <j.0:Minimum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature_4">
+                            <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                            >10.3</j.0:hasValue>
+                          </j.0:Minimum_Temperature>
+                        </j.0:hasEnvRequirement>
+                        <j.0:belongsTo rdf:resource="http://www.w3.org/2002/07/BuildingA"/>
+                      </j.0:Zone>
+                    </j.0:connects>
+                    <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_2"/>
+                    <j.0:hasActuaor>
+                      <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_02">
+                        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >27</j.0:hasId>
+                        <j.0:installAt rdf:resource="http://www.w3.org/2002/07/lock02"/>
+                      </j.0:Actuaor>
+                    </j.0:hasActuaor>
+                    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >19</j.0:hasId>
+                    <j.0:hasRFIDReader rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_02"/>
+                  </j.0:Lock>
+                </j.0:installFor>
               </j.0:RFID_Reader>
             </j.0:hasSensors>
             <j.0:isConnectedTo>
@@ -674,6 +905,13 @@
                     <j.0:installAt rdf:resource="http://www.w3.org/2002/07/lock01"/>
                   </j.0:Actuaor>
                 </j.0:hasActuaor>
+                <j.0:hasRFIDReader>
+                  <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_01">
+                    <j.0:installFor rdf:resource="http://www.w3.org/2002/07/lock01"/>
+                    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >14</j.0:hasId>
+                  </j.0:RFID_Reader>
+                </j.0:hasRFIDReader>
               </j.0:Lock>
             </j.0:isConnectedTo>
             <j.0:hasEnvRequirement>
@@ -682,62 +920,8 @@
                 >20.0</j.0:hasValue>
               </j.0:Minimum_Temperature>
             </j.0:hasEnvRequirement>
-            <j.0:hasEnvRequirement>
-              <j.0:Maximum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_3">
-                <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-                >25.6</j.0:hasValue>
-              </j.0:Maximum_Temperature>
-            </j.0:hasEnvRequirement>
-            <j.0:isConnectedTo>
-              <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock02">
-                <j.0:connects>
-                  <j.0:Zone rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1">
-                    <j.0:hasSensors>
-                      <j.0:Light_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_1">
-                        <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
-                        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                        >1</j.0:hasId>
-                      </j.0:Light_Sensor>
-                    </j.0:hasSensors>
-                    <j.0:hasSensors>
-                      <j.0:Humidity_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_1">
-                        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                        >9</j.0:hasId>
-                        <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
-                      </j.0:Humidity_Sensor>
-                    </j.0:hasSensors>
-                    <j.0:hasSensors>
-                      <j.0:Temperature_Sensor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_1">
-                        <j.0:installed rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
-                        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                        >5</j.0:hasId>
-                      </j.0:Temperature_Sensor>
-                    </j.0:hasSensors>
-                    <j.0:isConnectedTo rdf:resource="http://www.w3.org/2002/07/lock02"/>
-                    <j.0:hasEnvRequirement rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_3"/>
-                    <j.0:isConnectedTo>
-                      <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock03">
-                        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                        >20</j.0:hasId>
-                        <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
-                      </j.0:Lock>
-                    </j.0:isConnectedTo>
-                    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                    >32</j.0:hasId>
-                    <j.0:hasEnvRequirement>
-                      <j.0:Minimum_Temperature rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Minimum_Temperature_4">
-                        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-                        >10.3</j.0:hasValue>
-                      </j.0:Minimum_Temperature>
-                    </j.0:hasEnvRequirement>
-                    <j.0:belongsTo rdf:resource="http://www.w3.org/2002/07/BuildingA"/>
-                  </j.0:Zone>
-                </j.0:connects>
-                <j.0:connects rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_2"/>
-                <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >19</j.0:hasId>
-              </j.0:Lock>
-            </j.0:isConnectedTo>
+            <j.0:hasEnvRequirement rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Maximum_Temperature_3"/>
+            <j.0:isConnectedTo rdf:resource="http://www.w3.org/2002/07/lock02"/>
           </j.0:Zone>
         </j.0:dividedInto>
         <j.0:dividedInto rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Zone_1"/>
@@ -746,27 +930,22 @@
       <j.0:Building rdf:about="http://www.w3.org/2002/07/Cantina"/>
     </owl:distinctMembers>
   </owl:AllDifferent>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_5">
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_4"/>
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >40.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_13">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >400.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_1"/>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_2">
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_1"/>
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >27.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_14">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >415.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_1"/>
-  </j.0:Sensor_Reading>
-  <swrl:Imp rdf:about="http://www.w3.org/2002/07/nullRule-1"/>
+  <j.0:Unlock_Lock rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Unlock_Lock_3">
+    <j.0:hasUserTag>
+      <j.0:RFID_Tag rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_3">
+        <j.0:ownedBy>
+          <j.1:Staff rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_3">
+            <j.0:isWearing rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_3"/>
+            <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Klaus</j.0:hasName>
+          </j.1:Staff>
+        </j.0:ownedBy>
+        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >15</j.0:hasId>
+      </j.0:RFID_Tag>
+    </j.0:hasUserTag>
+    <j.0:usedLock rdf:resource="http://www.w3.org/2002/07/lock06"/>
+  </j.0:Unlock_Lock>
   <owl:AllDifferent>
     <owl:distinctMembers rdf:parseType="Collection">
       <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock05"/>
@@ -776,125 +955,262 @@
       <j.0:Lock rdf:about="http://www.w3.org/2002/07/lock01"/>
     </owl:distinctMembers>
   </owl:AllDifferent>
-  <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_05">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >24</j.0:hasId>
-  </j.0:RFID_Reader>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_3">
+  <j.0:Lock_Lock rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Lock_3">
+    <j.0:usedLock rdf:resource="http://www.w3.org/2002/07/lock03"/>
+  </j.0:Lock_Lock>
+  <j.0:Lock_Lock rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Lock_2">
+    <j.0:usedLock rdf:resource="http://www.w3.org/2002/07/lock02"/>
+  </j.0:Lock_Lock>
+  <j.0:Unlock_Lock rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Unlock_Lock_1">
+    <j.0:hasUserTag>
+      <j.0:RFID_Tag rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_1">
+        <j.0:ownedBy>
+          <j.1:Staff rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_1">
+            <j.0:isWearing rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_1"/>
+            <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Hans</j.0:hasName>
+          </j.1:Staff>
+        </j.0:ownedBy>
+        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >42</j.0:hasId>
+      </j.0:RFID_Tag>
+    </j.0:hasUserTag>
+    <j.0:usedLock rdf:resource="http://www.w3.org/2002/07/lock04"/>
+  </j.0:Unlock_Lock>
+  <swrl:Imp rdf:about="http://www.w3.org/2002/07/nullRule-1"/>
+  <j.0:Unlock_Lock rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Unlock_Lock_2">
+    <j.0:usedLock rdf:resource="http://www.w3.org/2002/07/lock05"/>
+    <j.0:hasUserTag>
+      <j.0:RFID_Tag rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_2">
+        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >27</j.0:hasId>
+        <j.0:ownedBy>
+          <j.1:Staff rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_2">
+            <j.0:isWearing rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_2"/>
+            <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Peter</j.0:hasName>
+          </j.1:Staff>
+        </j.0:ownedBy>
+      </j.0:RFID_Tag>
+    </j.0:hasUserTag>
+  </j.0:Unlock_Lock>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_1">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_1">
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >25.0</j.0:hasValue>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_1"/>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_1"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:Logs rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs_1">
+    <j.0:hasRecord>
+      <j.0:Record rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record_4">
+        <j.0:hasEvent rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_1"/>
+        <j.0:hasLogged rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs_1"/>
+      </j.0:Record>
+    </j.0:hasRecord>
+    <j.0:hasRecord>
+      <j.0:Record rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record_3">
+        <j.0:hasLogged rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs_1"/>
+        <j.0:hasEvent>
+          <j.0:Lock_Lock rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Lock_Lock_1">
+            <j.0:usedLock rdf:resource="http://www.w3.org/2002/07/lock01"/>
+          </j.0:Lock_Lock>
+        </j.0:hasEvent>
+        <j.0:hasRFID_Tag rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_3"/>
+      </j.0:Record>
+    </j.0:hasRecord>
+    <j.0:hasRecord>
+      <j.0:Record rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record_2">
+        <j.0:hasLogged rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs_1"/>
+        <j.0:hasEvent>
+          <j.0:Flood rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Flood_45"/>
+        </j.0:hasEvent>
+        <j.0:hasRFID_Tag rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_2"/>
+      </j.0:Record>
+    </j.0:hasRecord>
+    <j.0:hasRecord>
+      <j.0:Record rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Record_1">
+        <j.0:hasEvent>
+          <j.0:Fire rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Fire_41"/>
+        </j.0:hasEvent>
+        <j.0:hasLogged rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Logs_1"/>
+        <j.0:hasRFID_Tag rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_1"/>
+      </j.0:Record>
+    </j.0:hasRecord>
+  </j.0:Logs>
+  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_16">
+    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_4"/>
     <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >10.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_2"/>
+    >500.0</j.0:hasValue>
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_16">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_16"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
   </j.0:Sensor_Reading>
-  <j.0:RFID_Reader rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Reader_01">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >14</j.0:hasId>
-  </j.0:RFID_Reader>
-  <j.0:Fire rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Fire_41"/>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_15">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >450.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_2"/>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_1">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >25.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_1"/>
-  </j.0:Sensor_Reading>
-  <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_06">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >31</j.0:hasId>
-  </j.0:Actuaor>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_8">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >78.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_1"/>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_17">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >470.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_3"/>
-  </j.0:Sensor_Reading>
-  <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_05">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >30</j.0:hasId>
-  </j.0:Actuaor>
-  <j.0:Flood rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Flood_45"/>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_9">
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_2"/>
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >43.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_9">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_9">
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_2"/>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_9"/>
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >43.0</j.0:hasValue>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_7">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_7">
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >50.0</j.0:hasValue>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_1"/>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_7"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_3">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_3">
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >10.0</j.0:hasValue>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_2"/>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_3"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
   <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_18">
     <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_4"/>
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_18">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_18"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
     <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
     >490.0</j.0:hasValue>
   </j.0:Sensor_Reading>
-  <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_04">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >29</j.0:hasId>
-  </j.0:Actuaor>
+  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_4">
+    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_3"/>
+    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</j.0:hasValue>
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_4">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_4"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
+  </j.0:Sensor_Reading>
+  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_2">
+    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_1"/>
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_2">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_2"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
+    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >27.0</j.0:hasValue>
+  </j.0:Sensor_Reading>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_12">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_12">
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_4"/>
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >15.0</j.0:hasValue>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_12"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_10">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_10">
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_10"/>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_3"/>
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >95.0</j.0:hasValue>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_14">
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_14">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_14"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
+    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >415.0</j.0:hasValue>
+    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_1"/>
+  </j.0:Sensor_Reading>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_17">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_17">
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_17"/>
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >470.0</j.0:hasValue>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_3"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_15">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_15">
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_15"/>
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >450.0</j.0:hasValue>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_2"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_13">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_13">
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >400.0</j.0:hasValue>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_1"/>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_13"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
   <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_6">
     <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
     >2.0</j.0:hasValue>
     <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_3"/>
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_6">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_6"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
   </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_10">
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_3"/>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_5">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_5">
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_5"/>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Temperature_Sensor_4"/>
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >40.0</j.0:hasValue>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
+  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_8">
+    <j.0:isRecordedIn>
+      <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_8">
+        <j.0:hasSensorReading rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_8"/>
+      </j.0:SensorReadingEvent>
+    </j.0:isRecordedIn>
     <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >95.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_19">
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Light_Sensor_4"/>
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >500.0</j.0:hasValue>
-  </j.0:Sensor_Reading>
-  <j.0:Actuaor rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Actuaor_03">
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >28</j.0:hasId>
-  </j.0:Actuaor>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_11">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >10.0</j.0:hasValue>
-    <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_4"/>
-  </j.0:Sensor_Reading>
-  <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_7">
-    <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
-    >50.0</j.0:hasValue>
+    >78.0</j.0:hasValue>
     <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_1"/>
   </j.0:Sensor_Reading>
-  <j.0:RFID_Tag rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_29">
-    <j.0:ownedBy>
-      <j.1:Staff rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_3">
-        <j.0:isWearing rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_29"/>
-        <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        >Klaus</j.0:hasName>
-      </j.1:Staff>
-    </j.0:ownedBy>
-    <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-    >15</j.0:hasId>
-  </j.0:RFID_Tag>
-  <j.1:Staff rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_1">
-    <j.0:isWearing>
-      <j.0:RFID_Tag rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_1">
-        <j.0:ownedBy rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_1"/>
-        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >42</j.0:hasId>
-      </j.0:RFID_Tag>
-    </j.0:isWearing>
-    <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Hans</j.0:hasName>
-  </j.1:Staff>
-  <j.1:Staff rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_2">
-    <j.0:isWearing>
-      <j.0:RFID_Tag rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#RFID_Tag_28">
-        <j.0:ownedBy rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Staff_2"/>
-        <j.0:hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >27</j.0:hasId>
-      </j.0:RFID_Tag>
-    </j.0:isWearing>
-    <j.0:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Peter</j.0:hasName>
-  </j.1:Staff>
+  <j.0:SensorReadingEvent rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_11">
+    <j.0:hasSensorReading>
+      <j.0:Sensor_Reading rdf:about="http://www.scss.tcd.ie/pg/ubicom/ruckr#Sensor_Reading_11">
+        <j.0:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >10.0</j.0:hasValue>
+        <j.0:hasSensorType rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#Humidity_Sensor_4"/>
+        <j.0:isRecordedIn rdf:resource="http://www.scss.tcd.ie/pg/ubicom/ruckr#SensorReadingEvent_11"/>
+      </j.0:Sensor_Reading>
+    </j.0:hasSensorReading>
+  </j.0:SensorReadingEvent>
 </rdf:RDF>
 
 <!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->
